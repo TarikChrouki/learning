@@ -1,0 +1,48 @@
+version: '3.5'
+
+networks:
+  confluent-dev:
+    name: confluent-dev
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.37.1
+    networks:
+      - confluent-dev
+    ports:
+      - 9000:9090
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus-data:/prometheus
+    command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus-adapted.yml
+
+
+  grafana:
+    image: grafana/grafana:9.1.4
+    container_name: grafana
+    restart: unless-stopped
+    user: "0"
+    ports:
+      - 3000:3000
+    environment:
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: "/var/lib/grafana/dashboards/kafka-cluster.json"
+    volumes:
+      - ./grafana:/var/lib/grafana
+      - ./grafana-provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+    networks:
+      - confluent-dev
+
+  kafka-lag-exporter:
+    image: lightbend/kafka-lag-exporter:0.6.7
+    container_name: kafka-lag-exporter
+    hostname: kafka-lag-exporter
+    restart: always
+    volumes:
+      - ./kafka-lag-exporter:/opt/docker/conf
+    networks:
+      - confluent-dev
+
+volumes:
+  prometheus-data:

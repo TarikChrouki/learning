@@ -53,4 +53,4 @@ A custom certifications will be generated at certs/generated_ssl_files
 `ansible-playbook -i inventories/tls-plain/development.yml confluent.platform.all --skip-tags validate_ssl_keys_certs`
 
 ## 5 available tasks
- `ansible-playbook -i inventories/development/development.yml confluent.platform.all --list-tasks`
+`ansible-playbook -i inventories/development/development.yml confluent.platform.all --list-tasks`

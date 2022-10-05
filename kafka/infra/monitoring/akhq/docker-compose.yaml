@@ -1,0 +1,25 @@
+version: '3.6'
+
+networks:
+  confluent-dev:
+    name: confluent-dev
+
+services:
+  akhq:
+    image: tchiotludo/akhq
+    networks:
+      - confluent-dev
+    environment:
+      AKHQ_CONFIGURATION: |
+        akhq:
+          connections:
+            docker-kafka-server:
+              properties:
+                bootstrap.servers: "kafka-0:9092"
+              schema-registry:
+                url: "http://schema-registry-0.dev.confluent:8081"
+              connect:
+                - name: "connect"
+                  url: "http://kafka-connect-0.dev.confluent:8083"
+    ports:
+      - 8089:8080
