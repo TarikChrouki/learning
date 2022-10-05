@@ -1,0 +1,124 @@
+---
+version: '3.5' 
+
+networks:
+  confluent-dev:
+    name: confluent-dev
+
+services: 
+  zk1:
+    image: local/centos7-efg
+    hostname: zk1.dev.confluent
+    container_name: zk1.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  kafka-0:
+    image: local/centos7-efg
+    hostname: kafka-0.dev.confluent
+    container_name: kafka-0.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    ports:
+      - "9990:9999"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  kafka-1:
+    image: local/centos7-efg
+    hostname: kafka-1.dev.confluent
+    container_name: kafka-1.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    ports:
+      - "9991:9999"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  kafka-2:
+    image: local/centos7-efg
+    hostname: kafka-2.dev.confluent
+    container_name: kafka-2.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    ports:
+      - "9992:9999"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  ksql-0:
+    image: local/centos7-efg
+    hostname: ksql-0.dev.confluent
+    container_name: ksql-0.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    ports:
+      - "8088:8088"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  schema-registry-0:
+    image: local/centos7-efg
+    hostname: schema-registry-0.dev.confluent
+    container_name: schema-registry-0.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    ports:
+      - "8081:8081"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  control-center:
+    image: local/centos7-efg
+    hostname: control-center.dev.confluent
+    container_name: control-center.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    ports:
+      - "9021:9021"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  kafka-connect-0:
+    image: local/centos7-efg
+    hostname: kafka-connect-0.dev.confluent
+    container_name: kafka-connect-0.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    ports:
+      - "8083:8083"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  kafka-connect-1:
+    image: local/centos7-efg
+    hostname: kafka-connect-1.dev.confluent
+    container_name: kafka-connect-1.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    ports:
+      - "8084:8083"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  kafka-connect-2:
+    image: local/centos7-efg
+    hostname: kafka-connect-2.dev.confluent
+    container_name: kafka-connect-2.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    ports:
+      - "8085:8083"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro

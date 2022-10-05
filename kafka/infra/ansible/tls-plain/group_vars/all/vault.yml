@@ -1,0 +1,11 @@
+---
+# Sensitive SSL passwords
+vault_ssl_key_password: keypass
+vault_confluent_truststore_password: truststorepass
+vault_confluent_keystore_password: keystorepass
+
+# Sensitive user passwords
+vault_kafka_password: kafka-secret
+vault_client_password: client-secret
+vault_kafka_connect_password: kafka-connect-secret
+vault_control_center_password: control-center-secret

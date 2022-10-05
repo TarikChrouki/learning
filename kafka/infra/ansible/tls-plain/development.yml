@@ -1,0 +1,27 @@
+all:
+  vars:
+    ansible_connection: docker
+    ansible_user: root
+    ansible_become: true
+    env: development
+
+
+zookeeper:
+  hosts:
+    zk1.dev.confluent:
+
+kafka_broker:
+  hosts:
+    kafka-0.dev.confluent:
+    kafka-1.dev.confluent:
+    kafka-2.dev.confluent:
+
+kafka_connect:
+  hosts:
+    kafka-connect-0.dev.confluent:
+    kafka-connect-1.dev.confluent:
+    kafka-connect-2.dev.confluent:
+
+control_center:
+  hosts:
+    control-center.dev.confluent:

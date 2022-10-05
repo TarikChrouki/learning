@@ -1,0 +1,6 @@
+---
+# Ansible collections required for the local dev
+collections:
+- ansible.posix
+- community.docker
+- community.general

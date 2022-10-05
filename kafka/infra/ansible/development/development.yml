@@ -1,0 +1,41 @@
+all:
+  vars:
+#    confluent_package_version: 7.2.0
+    ansible_connection: docker
+    ansible_user: root
+    ansible_become: true
+    env: development
+    jmxexporter_enabled: true
+    required_total_memory_mb_schema_registry: 1000
+    required_total_memory_mb_ksql: 1500
+    required_total_memory_mb_kafka_connect: 1000
+    required_total_memory_mb_kafka_broker: 1000
+    required_total_memory_mb_zookeeper: 500
+
+zookeeper:
+  hosts:
+    zk1.dev.confluent:
+
+kafka_broker:
+  hosts:
+    kafka-0.dev.confluent:
+    kafka-1.dev.confluent:
+    kafka-2.dev.confluent:
+
+ksql:
+  hosts:
+    ksql-0.dev.confluent:
+
+schema_registry:
+  hosts:
+    schema-registry-0.dev.confluent:
+
+kafka_connect:
+  hosts:
+#    kafka-connect-0.dev.confluent:
+#    kafka-connect-1.dev.confluent:
+    kafka-connect-2.dev.confluent:
+
+control_center:
+  hosts:
+#    control-center.dev.confluent:

@@ -1,0 +1,6 @@
+---
+# Sensitive SSL passwords
+vault_ssl_key_password: keypass
+vault_confluent_truststore_password: truststorepass
+vault_confluent_keystore_password: keystorepass
+

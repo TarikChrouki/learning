@@ -1,0 +1,8 @@
+zookeeper:zk1.dev.confluent
+kafka_broker:kafka-0.dev.confluent
+kafka_broker:kafka-1.dev.confluent
+kafka_broker:kafka-2.dev.confluent
+kafka_connect:kafka-connect-0.dev.confluent:
+kafka_connect:kafka-connect-1.dev.confluent:
+kafka_connect:kafka-connect-2.dev.confluent:
+control_center:control-center.dev.confluent
